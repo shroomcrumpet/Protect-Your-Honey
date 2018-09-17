@@ -3,7 +3,8 @@ var body = document.body;
 var playingField = document.querySelector('.playing-field');
 
 var dimensions = 4;
-var gameDuration = 4;
+var gameDuration = 10;
+var score = 0;
 
 
 function createBoxes () {
@@ -70,7 +71,7 @@ function randomBox(boxes) {
 
 
 function popOut() {
-    var time = randomTime (300, 1000);
+    var time = randomTime (1500, 3500);
     var box = randomBox(boxes);
 
     box.classList.add('poppedUp');
@@ -88,14 +89,25 @@ function popOut() {
 };
 
 
+function bonk(event) {
+    console.log(this.classList);
+    // this.classList.remove('poppedUp');
+    score++;
+}
+
+
+for (i = 0; i < bears.length; i++) {
+    bears[i].addEventListener('click', bonk);
+}
+
+
 function init() {
-    // set score = 0;
+    score = 0;
     popOut();
 
-    setTimeout (function() {
-        gameOver = true;
-    }, gameDuration * 1000);
+    setTimeout (function() {gameOver = true;}, gameDuration * 1000);
 }
+
 
 
 

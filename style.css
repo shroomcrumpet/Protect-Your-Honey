@@ -1,12 +1,27 @@
+h1 {
+	text-align: center;
+}
+
+#start-game {
+	margin: auto;
+	display: block;
+}
+
+body {
+	background-color: orange;
+}
 
 .playing-field {
 	background-color: orange;
+	text-align: center;
 	width: 800px;
 	margin: 50px auto;
+	border: 20px solid black;
 }
 
 .box {
 	display: inline-block;
+	margin: 10px 0;
 	width: 150px;
 	height: 180px;
 	position: relative;
