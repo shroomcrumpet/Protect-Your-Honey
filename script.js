@@ -71,7 +71,7 @@ function randomBox(boxes) {
 
 
 function popOut() {
-    var time = randomTime (1500, 3500);
+    var time = randomTime (500, 2000);
     var box = randomBox(boxes);
 
     box.classList.add('poppedUp');
@@ -90,8 +90,7 @@ function popOut() {
 
 
 function bonk(event) {
-    console.log(this.classList);
-    // this.classList.remove('poppedUp');
+    this.parentElement.classList.remove('poppedUp');
     score++;
 }
 
