@@ -1,11 +1,11 @@
 
 var body = document.body;
 var playingField = document.querySelector('.playing-field');
+var scoreboard = document.querySelector('.scoreboard');
 
 var dimensions = 4;
-var gameDuration = 10;
+var gameDuration = 15;
 var score = 0;
-
 
 function createBoxes () {
 
@@ -22,7 +22,6 @@ function createBoxes () {
             var newBox = document.createElement('div');
             newBox.className = 'box';
             newBox.id = `${i}${j}`;
-            // newBox.textContent = 'BOX';
             newRow.appendChild(newBox);
 
             var honeypot = document.createElement('img');
@@ -92,6 +91,7 @@ function popOut() {
 function bonk(event) {
     this.parentElement.classList.remove('poppedUp');
     score++;
+    scoreboard.textContent = score;
 }
 
 
@@ -102,33 +102,9 @@ for (i = 0; i < bears.length; i++) {
 
 function init() {
     score = 0;
+    scoreboard.textContent = score;
     popOut();
 
     setTimeout (function() {gameOver = true;}, gameDuration * 1000);
 }
 
-
-
-
-// startButton.addEventListener('click', init(10000));
-
-// bears.addEventListener('click', function(){
-//     asd
-// });
-
-
-
-// function createMoles () {
-
-//     boxes.forEach (function (mole, index) {
-//         var newMole = document.createElement('div');
-//         newMole.className = 'mole';
-//         newMole.id = `mole-${boxes[index].id}`;
-//         newMole.textContent = 'BEAR';
-//         boxes[index].appendChild(newMole);
-//     });
-
-//     moles = document.querySelectorAll('.mole');
-// };
-
-// createMoles();

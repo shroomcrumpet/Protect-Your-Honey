@@ -1,10 +1,30 @@
 h1 {
 	text-align: center;
+	font-family: 'Amatic SC', cursive;
+	font-weight: 700;
+/*	font-family: 'Annie Use Your Telescope', cursive;*/
+/*	font-family: 'Monoton', cursive;*/
+	font-size: 65px;
 }
+
+
+.scoreboard {
+	font-family: 'Monoton', cursive;
+	margin-left: 30px;
+	padding: 0 10px;
+	background-color: #EC8A0F;
+	border-radius: 20%;
+}
+
 
 #start-game {
 	margin: auto;
 	display: block;
+	background-color: orange;
+	border: 2px solid black;
+	font-family: 'Annie Use Your Telescope', cursive;
+	font-size: 20px;
+	font-weight: 700;
 }
 
 body {
@@ -15,13 +35,14 @@ body {
 	background-color: orange;
 	text-align: center;
 	width: 800px;
-	margin: 50px auto;
-	border: 20px solid black;
+	padding: 10px;
+	margin: 10px auto;
+/*	border: 10px solid black;*/
 }
 
 .box {
 	display: inline-block;
-	margin: 10px 0;
+	margin: 5px 0;
 	width: 150px;
 	height: 180px;
 	position: relative;
