@@ -126,6 +126,7 @@ function init() {
     setTimeout( function() {
         popOut();
         startCounter.textContent = '';
+        startCounter.style.visibility = 'hidden';
     }, 4000);
 
     setTimeout (function() {gameOver = true;}, gameDuration*1000 + 4);

@@ -4,7 +4,8 @@ h1 {
 	font-weight: 700;
 /*	font-family: 'Annie Use Your Telescope', cursive;*/
 /*	font-family: 'Monoton', cursive;*/
-	font-size: 65px;
+	font-size: 80px;
+	margin-bottom: 10px;
 }
 
 
@@ -23,7 +24,7 @@ h1 {
 	background-color: orange;
 	border: 2px solid black;
 	font-family: 'Annie Use Your Telescope', cursive;
-	font-size: 20px;
+	font-size: 36px;
 	font-weight: 700;
 }
 
@@ -32,15 +33,15 @@ h1 {
 	position: absolute;
 	z-index: 9990;
 	font-family: 'Amatic SC', cursive;
-	font-size: 300px;
+	font-size: 2000%;
 	text-align: center;
 
 	top: 50%;
 	left: 50%;
-	width: 300px;
-	height: 300px;
-  margin-left:-150px;
-  margin-top:-150px;
+	width: 800px;
+	height: 800px;
+  margin-left:-400px;
+  margin-top:-400px;
 	/*Always remember to set the margin-left and margin-top to half the width of the div you wish to center,
 as elements always align from their sides and not their center.*/
 }
@@ -50,19 +51,21 @@ body {
 }
 
 .playing-field {
+	position: relative;
 	background-color: orange;
 	text-align: center;
 	width: 800px;
+	height: 1100px;
 	padding: 10px;
 	margin: 10px auto;
-/*	border: 10px solid black;*/
+/*	border: 10px solid #EC8A0F;*/
 }
 
 .box {
 	display: inline-block;
 	margin: 5px;
 	width: 160px;
-	height: 180px;
+	height: 220px;
 	position: relative;
 	overflow: hidden;
 }
@@ -70,18 +73,18 @@ body {
 .honeypot {
 	position: absolute;
 	text-align: center;
-	margin-left: -65px;
+	margin-left: -42.5%;
 	bottom: 0;
 	z-index: 9000;
-	width: 130px;
+	width: 85%;
 }
 
 .bear {
 	position: absolute;
 	text-align: center;
-	margin-left: -65px;
+	margin-left: -42.5%;
 	top: 100%;
-	width: 130px;
+	width: 85%;
 	transition: all 0.4s;
 }
 
