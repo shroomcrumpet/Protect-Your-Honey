@@ -1,0 +1,34 @@
+
+.playing-field {
+	background-color: orange;
+	width: 800px;
+	margin: 50px auto;
+}
+
+.box {
+	display: inline-block;
+	width: 150px;
+	height: 180px;
+	position: relative;
+	overflow: hidden;
+}
+
+.honeypot {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 9999;
+	width: 80%;
+}
+
+.bear {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 80%;
+	transition: all 0.4s;
+}
+
+.box.poppedUp .bear {
+	top: 0;
+}
