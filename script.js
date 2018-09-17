@@ -2,6 +2,7 @@
 var body = document.body;
 var playingField = document.querySelector('.playing-field');
 var scoreboard = document.querySelector('.scoreboard');
+var startCounter = document.getElementById('countdown-to-start');
 
 var dimensions = 4;
 var gameDuration = 15;
@@ -92,19 +93,41 @@ function bonk(event) {
     this.parentElement.classList.remove('poppedUp');
     score++;
     scoreboard.textContent = score;
-}
+};
 
 
 for (i = 0; i < bears.length; i++) {
     bears[i].addEventListener('click', bonk);
-}
+};
+
+
+var countStart = 3
+function countdownStart() {
+    startCounter.textContent = countStart;
+
+    setTimeout(function() {
+        countStart--;
+
+        if(countStart === 0) {
+            startCounter.textContent = 'Go!';
+            return;
+        };
+        countdownStart();
+
+    }, 1000);
+};
 
 
 function init() {
     score = 0;
     scoreboard.textContent = score;
-    popOut();
 
-    setTimeout (function() {gameOver = true;}, gameDuration * 1000);
-}
+    countdownStart();
+    setTimeout( function() {
+        popOut();
+        startCounter.textContent = '';
+    }, 4000);
+
+    setTimeout (function() {gameOver = true;}, gameDuration*1000 + 4);
+};
 
