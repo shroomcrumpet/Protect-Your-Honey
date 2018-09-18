@@ -62,7 +62,7 @@ function createBoxes () {
             newBox.appendChild(honeypot);
 
             var bear = document.createElement('img');
-            bear.src = './images/bear2.png';
+            bear.src = './images/bear3.png';
             bear.className = 'bear';
             bear.id = `honeypot-${i}${j}`
             newBox.appendChild(bear);
