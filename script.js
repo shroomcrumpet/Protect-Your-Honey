@@ -1,30 +1,37 @@
 
 var body = document.body;
-var playingField = document.querySelector('.playing-field');
+var h1 = document.querySelector('h1');
 var scoreboard = document.querySelector('.scoreboard');
-var startCounter = document.getElementById('countdown-to-start');
-// var gameCounter = document.querySelector('.button-container');
+var startButton = document.querySelector('#start-game-button');
 var gameCounter = document.querySelector('.ingame-countdown');
+var playingField = document.querySelector('.playing-field');
+var startCounter = document.getElementById('countdown-to-start');
+
+var interactibles = [h1, scoreboard, startButton, gameCounter, playingField];
 
 var dimensions = 4;
-var gameDuration = 15;
+var gameDuration = 5;
 var score = 0;
 
 
-function preventZoom(e) { // prevents double-tap zooming (for mobile devices)
-  var t2 = e.timeStamp;
-  var t1 = e.currentTarget.dataset.lastTouch || t2;
+function preventZoom(event) { // prevents double-tap zooming and selecting
+  var t2 = event.timeStamp;
+  var t1 = event.currentTarget.dataset.lastTouch || t2;
   var dt = t2 - t1;
-  var fingers = e.touches.length;
-  e.currentTarget.dataset.lastTouch = t2;
+  var fingers = event.touches.length;
+
+  event.currentTarget.dataset.lastTouch = t2;
 
   if (!dt || dt > 500 || fingers > 1) return; // not double-tap
 
-  e.preventDefault();
-  e.target.click();
+  event.preventDefault();
+  event.target.click();
 }
 
-playingField.addEventListener('touchstart', preventZoom);
+interactibles.forEach( function(element) {
+    element.addEventListener('touchstart', preventZoom);
+});
+
 
 
 function createBoxes () {
@@ -67,7 +74,6 @@ var rows = document.querySelectorAll('.row');
 var boxes = document.querySelectorAll('.box');
 var bears = document.querySelectorAll('.bear');
 var pots = document.querySelectorAll('.honeypot');
-var startButton = document.querySelector('#start-game-button');
 var lastBox;
 
 
@@ -148,8 +154,10 @@ function countdownGame() {
             gameCounter.textContent = "Time's Up!";
             setTimeout( function() {
                 gameCounter.textContent = '';
+                startButton.textContent = '\xa0# Play Again #\xa0';
                 startButton.style.visibility = 'visible';
-                }, 2000);
+                startButton.addEventListener('click', init);
+                }, 3000);
             return;
         };
         countdownGame();
@@ -159,7 +167,13 @@ function countdownGame() {
 
 
 function init() {
+    startButton.removeEventListener('click', init); // prevents multi-clicking leading to multiple function instances
     score = 0;
+    gameOver = false;
+    countStart = 3;
+    countGame = gameDuration;
+    startCounter.style.visibility = 'visible';
+
     scoreboard.textContent = score;
 
     countdownStart();
@@ -174,3 +188,5 @@ function init() {
     setTimeout (function() {gameOver = true;}, (gameDuration + 4) * 1000);
 };
 
+
+startButton.addEventListener('click', init);
