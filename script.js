@@ -3,6 +3,8 @@ var body = document.body;
 var playingField = document.querySelector('.playing-field');
 var scoreboard = document.querySelector('.scoreboard');
 var startCounter = document.getElementById('countdown-to-start');
+// var gameCounter = document.querySelector('.button-container');
+var gameCounter = document.querySelector('.ingame-countdown');
 
 var dimensions = 4;
 var gameDuration = 15;
@@ -26,7 +28,7 @@ function createBoxes () {
             newRow.appendChild(newBox);
 
             var honeypot = document.createElement('img');
-            honeypot.src = './images/honeypot.png';
+            honeypot.src = './images/honeypot3.png';
             honeypot.id = `honeypot-${i}${j}`;
             honeypot.className = 'honeypot'
             newBox.appendChild(honeypot);
@@ -48,7 +50,7 @@ var rows = document.querySelectorAll('.row');
 var boxes = document.querySelectorAll('.box');
 var bears = document.querySelectorAll('.bear');
 var pots = document.querySelectorAll('.honeypot');
-var startButton = document.querySelector('button');
+var startButton = document.querySelector('#start-game-button');
 var lastBox;
 
 
@@ -118,17 +120,40 @@ function countdownStart() {
 };
 
 
+var countGame = gameDuration;
+function countdownGame() {
+    gameCounter.textContent = `${countGame} seconds remaining`;
+
+    setTimeout(function() {
+        countGame--;
+
+        if(countGame === 0) {
+            gameCounter.textContent = "Time's Up!";
+            setTimeout( function() {
+                gameCounter.textContent = '';
+                startButton.style.visibility = 'visible';
+                }, 2000);
+            return;
+        };
+        countdownGame();
+
+    }, 1000);
+};
+
+
 function init() {
     score = 0;
     scoreboard.textContent = score;
 
     countdownStart();
     setTimeout( function() {
-        popOut();
         startCounter.textContent = '';
         startCounter.style.visibility = 'hidden';
+        startButton.style.visibility = 'hidden';
+        popOut();
+        countdownGame();
     }, 4000);
 
-    setTimeout (function() {gameOver = true;}, gameDuration*1000 + 4);
+    setTimeout (function() {gameOver = true;}, (gameDuration + 4) * 1000);
 };
 

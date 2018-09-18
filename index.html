@@ -18,12 +18,16 @@
 
     <h1>Protect Your Honey! <span class="scoreboard">0</span></h1>
 
-    <button id="start-game" onclick="init()">Start Game</button>
+    <div class="button-container">
+
+        <span class="ingame-countdown"></span>
+
+        <div id="start-game-button" class="button" onclick="init()">&nbsp# Start Game #&nbsp</div>
+
+    </div>
 
     <div class="playing-field">
-
         <div id="countdown-to-start"></div>
-
     </div>
 
     <script type="text/javascript" src="script.js"></script>
