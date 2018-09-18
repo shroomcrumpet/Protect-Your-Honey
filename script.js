@@ -9,6 +9,8 @@ var startCounter = document.getElementById('countdown-to-start');
 
 var interactibles = [h1, scoreboard, startButton, gameCounter, playingField];
 
+var sound_Bonk = new Audio('./audio/frypan.mp3');
+
 var dimensions = 3;
 var gameDuration = 15;
 var score = 0;
@@ -120,6 +122,7 @@ function popOut() {
 
 function bonk(event) {
     this.parentElement.classList.remove('poppedUp');
+    sound_Bonk.play();
     score++;
     scoreboard.textContent = score;
 };
