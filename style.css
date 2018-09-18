@@ -83,9 +83,9 @@ body {
 
 .box {
 	display: inline-block;
-	margin: 5px;
+/*	margin: 5px;
 	width: 160px;
-	height: 220px;
+	height: 220px;*/
 	position: relative;
 	overflow: hidden;
 }

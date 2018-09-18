@@ -9,8 +9,8 @@ var startCounter = document.getElementById('countdown-to-start');
 
 var interactibles = [h1, scoreboard, startButton, gameCounter, playingField];
 
-var dimensions = 4;
-var gameDuration = 5;
+var dimensions = 3;
+var gameDuration = 15;
 var score = 0;
 
 
@@ -40,6 +40,7 @@ function createBoxes () {
     var newRow = document.createElement('div');
     newRow.className = 'row';
     newRow.id = `row ${i}`;
+    newRow.style.height = `${100/(dimensions+1)}%`;
     playingField.appendChild(newRow);
 
     var newBox = document.createElement('div');
@@ -49,6 +50,9 @@ function createBoxes () {
             var newBox = document.createElement('div');
             newBox.className = 'box';
             newBox.id = `${i}${j}`;
+            newBox.style.width = `${100/(dimensions+1)}%`;
+            newBox.style.height = '100%';
+            newBox.style.margin = `${(100-((100*dimensions)/(dimensions+1)))/(2*dimensions)}%`;
             newRow.appendChild(newBox);
 
             var honeypot = document.createElement('img');
