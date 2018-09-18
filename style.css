@@ -38,7 +38,7 @@ h1 {
 }*/
 
 .ingame-countdown {
-	position: absolute;
+	position: relative;
 }
 
 #countdown-to-start {
