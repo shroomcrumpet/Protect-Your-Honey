@@ -66,6 +66,7 @@ body {
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
+	white-space: nowrap;
 	font-family: 'Amatic SC', cursive;
 	font-size: 55px;
 	z-index: 7100;
@@ -243,13 +244,15 @@ cursor: pointer;
 	}
 
 	#start-game-button {
-		width: 45%;
+		width: 55%;
 	}
 
 	#high-score {
 		top: 20px;
 		left: 20px;
 		font-size: 65px;
+		width: 50%;
+		height: 5%;
 	}
 
 	.playing-field {
