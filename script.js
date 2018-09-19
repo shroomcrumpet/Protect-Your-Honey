@@ -21,7 +21,7 @@ var config1decrease = document.querySelector('#config-1 .decrease');
 var config2increase = document.querySelector('#config-2 .increase');
 var config2decrease = document.querySelector('#config-2 .decrease');
 
-var interactibles = [h1, scoreboard, startButton, gameCounter, playingField];
+var interactibles = [h1, scoreboard, startButton, gameCounter, playingField, cog, configScreen];
 
 var dimensions = 4;
 var gameDuration = 15;
@@ -225,7 +225,7 @@ function increaseDimensions() {
         config1increase.style.visibility = 'hidden';
     };
     if (dimensions > 3) {
-        config1decrease.style.visibility = 'visible';
+        config1decrease.style.visibility = 'inherit';
     };
 
     while (playingField.firstChild) {
@@ -245,7 +245,7 @@ function decreaseDimensions() {
         config1decrease.style.visibility = 'hidden';
     };
     if (dimensions < 5) {
-        config1increase.style.visibility = 'visible';
+        config1increase.style.visibility = 'inherit';
     };
 
     while (playingField.firstChild) {
@@ -267,7 +267,7 @@ function increaseDuration() {
         config2increase.style.visibility = 'hidden';
     };
     if (gameDuration > 5) {
-        config2decrease.style.visibility = 'visible';
+        config2decrease.style.visibility = 'inherit';
     };
 };
 
@@ -283,7 +283,7 @@ function decreaseDuration() {
         config2decrease.style.visibility = 'hidden';
     };
     if (gameDuration < 60) {
-        config2increase.style.visibility = 'visible';
+        config2increase.style.visibility = 'inherit';
     };
 };
 
