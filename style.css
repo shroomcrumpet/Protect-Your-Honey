@@ -31,18 +31,6 @@ h1 {
 	font-weight: 700;
 	z-index: 8000;
 }
-/*
-#start-game-button {
-	position: relative;
-	width: 30%;
-	margin: 0 auto;
-	background-color: #FD8008;
-	border: 5px solid black;
-	font-family: 'Annie Use Your Telescope', cursive;
-	font-size: 36px;
-	font-weight: 700;
-	z-index: 9000;
-}*/
 
 .ingame-countdown {
 	position: relative;
@@ -50,7 +38,7 @@ h1 {
 
 #countdown-to-start {
 	position: absolute;
-	z-index: 9990;
+	z-index: 9000;
 	font-family: 'Amatic SC', cursive;
 	font-size: 2000%;
 	text-align: center;
@@ -68,6 +56,45 @@ as elements always align from their sides and not their center.*/
 body {
 	background-color: #FFA500;
 	z-index: 5000;
+}
+
+.config-screen {
+	position: fixed;
+	width: 800px;
+	height: 600px;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	background-color: rgba(150,150,150,0.55);
+	border: 5px solid black;
+	border-radius: 8%;
+	visibility: visible;
+	z-index: 9500;
+}
+
+.config-screen:hover {
+	background-color: rgba(253,128,8,0.90);
+}
+
+.config-option {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Amatic SC', cursive;
+	color: black;
+	font-size: 50px;
+	height: 25%;
+	margin: 5%;
+}
+
+.config-option span {
+	text-align: center;
+}
+
+.arrow-selector {
+	font-size: 60%;
 }
 
 .playing-field {
@@ -95,7 +122,7 @@ body {
 	text-align: center;
 	margin-left: -42.5%;
 	bottom: 0;
-	z-index: 9000;
+	z-index: 7000;
 	width: 85%;
 }
 
@@ -178,3 +205,16 @@ body {
 #start-game-button:hover::after {
   transition-delay: 0s, 0.25s, 0s;
 }
+
+/*
+#start-game-button {
+	position: relative;
+	width: 30%;
+	margin: 0 auto;
+	background-color: #FD8008;
+	border: 5px solid black;
+	font-family: 'Annie Use Your Telescope', cursive;
+	font-size: 36px;
+	font-weight: 700;
+	z-index: 9000;
+}*/
