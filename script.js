@@ -6,21 +6,20 @@ var scoreboard = document.querySelector('.scoreboard');
 var startButton = document.querySelector('#start-game-button');
 var gameCounter = document.querySelector('.ingame-countdown');
 var playingField = document.querySelector('.playing-field');
+var cog = document.getElementById('cog');
 var startCounter;
 var rows;
 var boxes;
 var bears;
 var pots;
 var lastBox;
-
+var configScreen = document.querySelector('.config-screen');
 var config1 = document.getElementById('config-1-option');
 var config2 = document.getElementById('config-2-option');
 var config1increase = document.querySelector('#config-1 .increase');
 var config1decrease = document.querySelector('#config-1 .decrease');
 var config2increase = document.querySelector('#config-2 .increase');
 var config2decrease = document.querySelector('#config-2 .decrease');
-
-
 
 var interactibles = [h1, scoreboard, startButton, gameCounter, playingField];
 
@@ -87,8 +86,8 @@ function createField () {
     var newDiv = document.createElement('div');
     newDiv.id = 'countdown-to-start';
     playingField.appendChild(newDiv);
-
     startCounter = document.getElementById('countdown-to-start');
+
     rows = document.querySelectorAll('.row');
     boxes = document.querySelectorAll('.box');
     bears = document.querySelectorAll('.bear');
@@ -210,6 +209,13 @@ function init() {
 };
 
 
+function configCog() {
+    if (configScreen.style.visibility === 'visible') {
+        configScreen.style.visibility = 'hidden';
+    } else {configScreen.style.visibility = 'visible'};
+};
+
+
 function increaseDimensions() {
     if (dimensions < 5) {
         dimensions++
@@ -282,10 +288,10 @@ function decreaseDuration() {
 };
 
 
-
 createField();
 
 startButton.addEventListener('click', init);
+cog.addEventListener('click', configCog);
 config1increase.addEventListener('click', increaseDimensions);
 config1decrease.addEventListener('click', decreaseDimensions);
 config2increase.addEventListener('click', increaseDuration);
