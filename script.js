@@ -1,19 +1,33 @@
 
+var sound_Bonk = new Audio('./audio/frypan.mp3');
 var body = document.body;
 var h1 = document.querySelector('h1');
 var scoreboard = document.querySelector('.scoreboard');
 var startButton = document.querySelector('#start-game-button');
 var gameCounter = document.querySelector('.ingame-countdown');
 var playingField = document.querySelector('.playing-field');
-var startCounter = document.getElementById('countdown-to-start');
+var startCounter;
+var rows;
+var boxes;
+var bears;
+var pots;
+var lastBox;
+
+var config1 = document.getElementById('config-1-option');
+var config2 = document.getElementById('config-2-option');
+var config1increase = document.querySelector('#config-1 .increase');
+var config1decrease = document.querySelector('#config-1 .decrease');
+var config2increase = document.querySelector('#config-2 .increase');
+var config2decrease = document.querySelector('#config-2 .decrease');
+
+
 
 var interactibles = [h1, scoreboard, startButton, gameCounter, playingField];
 
-var sound_Bonk = new Audio('./audio/frypan.mp3');
-
-var dimensions = 3;
+var dimensions = 4;
 var gameDuration = 15;
 var score = 0;
+var gameOver = false;
 
 
 function preventZoom(event) { // prevents double-tap zooming and selecting
@@ -35,8 +49,7 @@ interactibles.forEach( function(element) {
 });
 
 
-
-function createBoxes () {
+function createField () {
 
     for (i = 0; i < dimensions; i++) {
     var newRow = document.createElement('div');
@@ -70,17 +83,21 @@ function createBoxes () {
             newBox.appendChild(bear);
         };
     };
+
+    var newDiv = document.createElement('div');
+    newDiv.id = 'countdown-to-start';
+    playingField.appendChild(newDiv);
+
+    startCounter = document.getElementById('countdown-to-start');
+    rows = document.querySelectorAll('.row');
+    boxes = document.querySelectorAll('.box');
+    bears = document.querySelectorAll('.bear');
+    pots = document.querySelectorAll('.honeypot');
+
+    for (i = 0; i < bears.length; i++) {
+        bears[i].addEventListener('click', bonk);
+    };
 };
-
-createBoxes();
-
-
-var gameOver = false;
-var rows = document.querySelectorAll('.row');
-var boxes = document.querySelectorAll('.box');
-var bears = document.querySelectorAll('.bear');
-var pots = document.querySelectorAll('.honeypot');
-var lastBox;
 
 
 function randomTime(min, max) {
@@ -128,12 +145,8 @@ function bonk(event) {
 };
 
 
-for (i = 0; i < bears.length; i++) {
-    bears[i].addEventListener('click', bonk);
-};
+var countStart = 3;
 
-
-var countStart = 3
 function countdownStart() {
     startCounter.textContent = countStart;
 
@@ -151,6 +164,7 @@ function countdownStart() {
 
 
 var countGame = gameDuration;
+
 function countdownGame() {
     gameCounter.textContent = `${countGame} seconds remaining`;
 
@@ -196,4 +210,90 @@ function init() {
 };
 
 
+function increaseDimensions() {
+    if (dimensions < 5) {
+        dimensions++
+        config1.textContent = dimensions;
+    };
+    if (dimensions === 5) {
+        config1increase.style.visibility = 'hidden';
+    };
+    if (dimensions > 3) {
+        config1decrease.style.visibility = 'visible';
+    };
+
+    while (playingField.firstChild) {
+    playingField.removeChild(playingField.firstChild);
+    };
+
+    createField();
+};
+
+
+function decreaseDimensions() {
+    if (dimensions > 3) {
+        dimensions--
+        config1.textContent = dimensions;
+    };
+    if (dimensions === 3) {
+        config1decrease.style.visibility = 'hidden';
+    };
+    if (dimensions < 5) {
+        config1increase.style.visibility = 'visible';
+    };
+
+    while (playingField.firstChild) {
+    playingField.removeChild(playingField.firstChild);
+    };
+
+    createField();
+};
+
+
+function increaseDuration() {
+    if (gameDuration < 30) {
+        gameDuration = gameDuration + 5;
+    } else if (gameDuration < 60) {
+        gameDuration = gameDuration + 10;
+    } config2.textContent = `${gameDuration}s`;
+
+    if (gameDuration === 60) {
+        config2increase.style.visibility = 'hidden';
+    };
+    if (gameDuration > 5) {
+        config2decrease.style.visibility = 'visible';
+    };
+};
+
+
+function decreaseDuration() {
+    if (gameDuration > 30) {
+        gameDuration = gameDuration - 10;
+    } else if (gameDuration > 5) {
+        gameDuration = gameDuration - 5;
+    } config2.textContent = `${gameDuration}s`;
+
+    if (gameDuration === 5) {
+        config2decrease.style.visibility = 'hidden';
+    };
+    if (gameDuration < 60) {
+        config2increase.style.visibility = 'visible';
+    };
+};
+
+
+
+createField();
+
 startButton.addEventListener('click', init);
+config1increase.addEventListener('click', increaseDimensions);
+config1decrease.addEventListener('click', decreaseDimensions);
+config2increase.addEventListener('click', increaseDuration);
+config2decrease.addEventListener('click', decreaseDuration);
+
+
+
+
+
+
+
