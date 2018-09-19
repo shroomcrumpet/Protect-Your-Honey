@@ -10,6 +10,7 @@ var startButton = document.querySelector('#start-game-button');
 var gameCounter = document.querySelector('.ingame-countdown');
 var playingField = document.querySelector('.playing-field');
 var cog = document.getElementById('cog');
+var highScoreBox = document.getElementById('high-score');
 var startCounter;
 var rows;
 var boxes;
@@ -27,11 +28,12 @@ var config3easy = document.getElementById('config-3-easy');
 var config3medium = document.getElementById('config-3-medium');
 var config3hard = document.getElementById('config-3-hard');
 
-var interactibles = [h1, scoreboard, startButton, gameCounter, playingField, cog, configScreen];
+var interactibles = [h1, scoreboard, startButton, gameCounter, playingField, cog, highScoreBox, configScreen];
 
 var dimensions = 4;
 var gameDuration = 15;
 var score = 0;
+var highScore = 0;
 var gameOver = false;
 var popTimeMin = 500;
 var popTimeMax = 1500;
@@ -187,6 +189,14 @@ function countdownGame() {
 
         if(countGame === 0) {
             gameCounter.textContent = "Time's Up!";
+
+            setTimeout (function() {
+                if (score > highScore) {
+                    highScore = score;
+                    highScoreBox.textContent = `Most Bears Panned: ${highScore}`;
+                };
+            }, 1500);
+
             setTimeout( function() {
                 gameCounter.textContent = '';
                 startButton.textContent = '\xa0# Play Again #\xa0';

@@ -62,6 +62,15 @@ body {
   animation: spin 2s linear infinite;
 }
 
+#high-score {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	font-family: 'Amatic SC', cursive;
+	font-size: 55px;
+	z-index: 7100;
+}
+
 .config-screen {
 	position: fixed;
 	width: 800px;
@@ -235,6 +244,12 @@ cursor: pointer;
 
 	#start-game-button {
 		width: 45%;
+	}
+
+	#high-score {
+		top: 20px;
+		left: 20px;
+		font-size: 65px;
 	}
 
 	.playing-field {
