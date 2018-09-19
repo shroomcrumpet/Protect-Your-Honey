@@ -80,6 +80,7 @@ body {
 	left: 0;
 	right: 0;
 	margin: 200px auto;
+	font-size: 50px;
 	background-color: rgba(150,150,150,0.55);
 	border: 5px solid black;
 	border-radius: 8%;
@@ -98,7 +99,6 @@ body {
 	align-items: center;
 	font-family: 'Amatic SC', cursive;
 	color: black;
-	font-size: 50px;
 	height: 25%;
 	margin: 5%;
 }
@@ -253,6 +253,11 @@ cursor: pointer;
 		font-size: 65px;
 		width: 50%;
 		height: 5%;
+	}
+
+	.config-screen {
+		height: 900px;
+		font-size: 70px;
 	}
 
 	.playing-field {
