@@ -23,6 +23,9 @@ var config1increase = document.querySelector('#config-1 .increase');
 var config1decrease = document.querySelector('#config-1 .decrease');
 var config2increase = document.querySelector('#config-2 .increase');
 var config2decrease = document.querySelector('#config-2 .decrease');
+var config3easy = document.getElementById('config-3-easy');
+var config3medium = document.getElementById('config-3-medium');
+var config3hard = document.getElementById('config-3-hard');
 
 var interactibles = [h1, scoreboard, startButton, gameCounter, playingField, cog, configScreen];
 
@@ -322,9 +325,18 @@ config1increase.addEventListener('click', increaseDimensions);
 config1decrease.addEventListener('click', decreaseDimensions);
 config2increase.addEventListener('click', increaseDuration);
 config2decrease.addEventListener('click', decreaseDuration);
-
-
-
+config3easy.addEventListener('click', function(){
+    sound_Click1.play();
+    popTimeMin = 1000;
+    popTimeMax = 2250;});
+config3medium.addEventListener('click', function(){
+    sound_Click1.play();
+    popTimeMin = 500;
+    popTimeMax = 1500;});
+config3hard.addEventListener('click', function(){
+    sound_Click1.play();
+    popTimeMin = 250;
+    popTimeMax = 1000;});
 
 
 
