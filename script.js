@@ -1,5 +1,8 @@
 
+var sound_Click1 = new Audio('./audio/click1.mp3');
+var sound_Click2 = new Audio('./audio/click2.mp3');
 var sound_Bonk = new Audio('./audio/frypan.mp3');
+
 var body = document.body;
 var h1 = document.querySelector('h1');
 var scoreboard = document.querySelector('.scoreboard');
@@ -27,6 +30,8 @@ var dimensions = 4;
 var gameDuration = 15;
 var score = 0;
 var gameOver = false;
+var popTimeMin = 500;
+var popTimeMax = 1500;
 
 
 function preventZoom(event) { // prevents double-tap zooming and selecting
@@ -118,7 +123,7 @@ function randomBox(boxes) {
 
 
 function popOut() {
-    var time = randomTime (500, 2000);
+    var time = randomTime (popTimeMin, popTimeMax);
     var box = randomBox(boxes);
 
     box.classList.add('poppedUp');
@@ -136,9 +141,16 @@ function popOut() {
 };
 
 
+function playBonkSound(volume) {
+  var clonedAudio = sound_Bonk.cloneNode();
+  clonedAudio.volume = volume;
+  clonedAudio.play();
+}
+
+
 function bonk(event) {
     this.parentElement.classList.remove('poppedUp');
-    sound_Bonk.play();
+    playBonkSound(0.6);
     score++;
     scoreboard.textContent = score;
 };
@@ -210,6 +222,8 @@ function init() {
 
 
 function configCog() {
+    sound_Click2.play();
+
     if (configScreen.style.visibility === 'visible') {
         configScreen.style.visibility = 'hidden';
     } else {configScreen.style.visibility = 'visible'};
@@ -217,6 +231,8 @@ function configCog() {
 
 
 function increaseDimensions() {
+    sound_Click1.play();
+
     if (dimensions < 5) {
         dimensions++
         config1.textContent = dimensions;
@@ -237,6 +253,8 @@ function increaseDimensions() {
 
 
 function decreaseDimensions() {
+    sound_Click1.play();
+
     if (dimensions > 3) {
         dimensions--
         config1.textContent = dimensions;
@@ -257,6 +275,8 @@ function decreaseDimensions() {
 
 
 function increaseDuration() {
+    sound_Click1.play();
+
     if (gameDuration < 30) {
         gameDuration = gameDuration + 5;
     } else if (gameDuration < 60) {
@@ -273,6 +293,8 @@ function increaseDuration() {
 
 
 function decreaseDuration() {
+    sound_Click1.play();
+
     if (gameDuration > 30) {
         gameDuration = gameDuration - 10;
     } else if (gameDuration > 5) {
@@ -291,6 +313,10 @@ function decreaseDuration() {
 createField();
 
 startButton.addEventListener('click', init);
+startButton.addEventListener('click', function(){
+    document.getElementById('marimba').play();
+    sound_Click2.play();
+});
 cog.addEventListener('click', configCog);
 config1increase.addEventListener('click', increaseDimensions);
 config1decrease.addEventListener('click', decreaseDimensions);
